@@ -14,7 +14,7 @@ export function getPgClient() {
   // Keep TLS verification enabled by default. To disable, set DB_REJECT_UNAUTHORIZED=false
   const ssl = { rejectUnauthorized: process.env.DB_REJECT_UNAUTHORIZED === 'false' ? false : true };
 
-  const client = new pg.Client({ connectionString: databaseUrl });
+  const client = new pg.Client({ connectionString: databaseUrl , ssl});
   // mark connected flag; we'll set it after successful connect
   client._isConnected = false;
   global.__pgClient = client;
