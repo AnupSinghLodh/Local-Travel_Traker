@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Family Member</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div>
+        <h1>Add family member</h1>
+      </div>
+      <div class="visit-count" style="visibility:hidden">
+        <span>Visited</span>
+        <strong>0</strong>
+      </div>
+    </header>
+
+    <main class="dashboard" style="grid-template-columns: 1fr;">
+      <div class="panel" style="max-width:640px; margin: 0 auto;">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">New member</p>
+            <h2>Create profile</h2>
+          </div>
+        </div>
+
+        <form action="/api/users" method="post" class="travel-form">
+          <label class="input-wrap">
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Full name" required>
+          </label>
+
+          <div>
+            <p class="eyebrow">Pick a color</p>
+            <div class="member-list" style="grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));">
+              <label class="member-card red-card ">
+                <input type="radio" name="color" value="#ef4444" style="display:none;" checked>
+              </label>
+
+              <label class="member-card green-card ">
+                <input type="radio" name="color" value="#10b981" style="display:none;">
+              
+              </label>
+
+              <label class="member-card teal-card ">
+                <input type="radio" name="color" value="#06b6d4" style="display:none;">
+            
+              </label>
+
+              <label class="member-card blue-card ">
+                <input type="radio" name="color" value="#6366f1" style="display:none;">
+                
+              </label>
+
+              <label class="member-card yellow-card ">
+                <input type="radio" name="color" value="#f59e0b" style="display:none;">
+              
+              </label>
+
+              <label class="member-card pink-card ">
+                <input type="radio" name="color" value="#ec4899" style="display:none;">
+            
+              </label>
+            </div>
+          </div>
+
+          <div class="button-row" style="margin-top:8px;">
+            <button type="submit" class="primary-btn">Add member</button>
+            <a href="/" class="secondary-btn" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; padding:15px 18px; border-radius:14px;">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Make clicking a member-card select its hidden radio input and show a selected state
+    (function(){
+      const cards = Array.from(document.querySelectorAll('.member-card'));
+      const shell = document.querySelector('.page-shell');
+      cards.forEach(card => {
+        const r = card.querySelector('input[type=radio]');
+        if(r && r.checked) card.classList.add('selected');
+        card.addEventListener('click', function(e){
+          // clear previous selection
+          cards.forEach(c => c.classList.remove('selected'));
+          const rr = this.querySelector('input[type=radio]');
+          if(rr){
+            rr.checked = true;
+            this.classList.add('selected');
+            if(shell && rr.value){ shell.style.setProperty('--member-color', rr.value); }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
