@@ -449,8 +449,6 @@ label.pink-card {
   display: block;
   background-image: url('https://img.magnific.com/premium-photo/indian-flag-texture-background-tricolour-tiranga-india_920413-749.jpg?semt=ais_hybrid&w=740&q=80');
   background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
   background-color: #cccccc;
 }
 .ag-canvas_svg path {
