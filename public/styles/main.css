@@ -447,7 +447,12 @@ label.pink-card {
   width: 100%;
   height: 100%;
   display: block;
-  background-color: black ;
+  background-image: url('https://unblast.com/wp-content/uploads/2021/01/Space-Background-Images.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #cccccc;
 }
 .ag-canvas_svg path {
   fill: #203447;
